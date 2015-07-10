@@ -5,6 +5,6 @@
 
 
   function AccountCtrl() {
-    
+    var ctrl = this;
   }
 })();

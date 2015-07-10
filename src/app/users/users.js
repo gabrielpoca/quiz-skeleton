@@ -3,9 +3,7 @@
     .module('starter')
     .controller('UsersCtrl', UsersCtrl);
 
-  function UsersCtrl(Users, $stream) {
+  function UsersCtrl() {
     var ctrl = this;
-    Users.sync();
-    ctrl.users = Users.all;
   }
 })();

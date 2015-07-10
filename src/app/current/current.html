@@ -1,28 +1,5 @@
 <ion-view view-title="Game">
-  <ion-content class="padding">
-    <div ng-hide="ctrl.current">
-      <div class="question">
-        <h3>Please wait for the next question</h3>
-        <ion-spinner></ion-spinner>
-      </div>
-    </div>
-    <div ng-show="ctrl.current">
-      <div class="question">
-        <h3>{{ ctrl.current.body }}</h3>
-      </div>
-      <ion-list class="list-answer">
-        <ion-radio
-          class="item-answer"
-          ng-repeat="answer in ctrl.current.answers"
-          ng-model="ctrl.answerId"
-          ng-click="ctrl.answer(ctrl.current.id, answer.id)"
-          ng-value="answer.id">
-          {{ answer.body }}
-        </ion-radio>
-      </ion-list>
-    </div>
+  <ion-content>
   </ion-content>
-
-  <winners winners="ctrl.winners" open="ctrl.showWinners"></winners>
 </ion-view>
 

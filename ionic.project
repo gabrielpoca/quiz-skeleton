@@ -1,5 +1,13 @@
 {
   "name": "quest-mobile",
   "app_id": "",
-  "gulpStartupTasks": ["default", "watch"]
+  "gulpStartupTasks": [
+    "default",
+    "watch",
+    "sass"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
 }

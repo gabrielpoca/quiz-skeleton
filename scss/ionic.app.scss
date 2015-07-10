@@ -1,4 +1,3 @@
-/*
 $light:                           #fff !default;
 $stable:                          #f8f8f8 !default;
 $positive:                        #387ef5 !default;
@@ -7,49 +6,8 @@ $balanced:                        #33cd5f !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
-*/
-
-$light:                           #fff !default;
-$energized:                       #FBBB20 !default;
-$stable:                          #EDF4F8 !default;
-$positive:                        #35C7FC !default;
-$dark:                            #444 !default;
 
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
-$base-background-color: $stable;
-$base-color: #333;
-
-$tabs-height: 69px !default;
-$tabs-icon-size: 52px !default;
-
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-
-.list-answer {
-  .item-answer:not(:last-child) {
-    margin-bottom: 1rem;
-  }
-}
-
-.item-answer {
-  margin: 0;
-  border: none;
-  font-size: 20px;
-}
-
-.item-answer .item-content {
-  margin: 0;
-  background-color: $stable;
-  border: 2px solid $dark;
-}
-
-.item-answer input:checked ~ .item-content {
-  border: 2px solid $energized;
-  background-color: $stable;
-}
-
-.question {
-  padding: 1rem 0;
-  text-align: center;
-}

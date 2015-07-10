@@ -38,7 +38,7 @@
 
   function ensureAuthentication($q, $timeout, $state, authProvider) {
     if (!authProvider.loggedIn()) {
-      $timeout(()=>{$state.go('login');});
+      $timeout(() => $state.go('login'));
       return $q.reject();
     }
     return $q.when();
