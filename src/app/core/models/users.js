@@ -6,8 +6,6 @@
   function Users($http, ENV, $stream) {
     var _users = [];
 
-    $stream.on('users:update', sync);
-
     return {
       all: all,
       find: find,

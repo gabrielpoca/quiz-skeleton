@@ -44,8 +44,8 @@
 
       logout();
       return $http.post(`${ENV.HOST}/register`, params)
-        .then(setAuthorizationHeaders.bind(this, username, password))
-        .then(setMe.bind(this));
+        .then(setMe.bind(this))
+        .then(setAuthorizationHeaders.bind(this, username, password));
     }
 
     function logout() {
