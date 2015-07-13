@@ -5,11 +5,10 @@
 
   function authProvider($q, $http, localStorageService, ENV) {
     var _loggedIn = false,
-      _loaded = $q.defer(),
       _me = null;
 
     setAuthorizationHeadersFromStore();
-    me().finally(_loaded.resolve);
+    me()
 
     return {
       register: register,
@@ -21,19 +20,20 @@
     };
 
     function loaded() {
-      return _loaded.promise;
+      if (_loggedIn) return $q.when(true);
+      else return me()
+    }
+
+    function me() {
+      if(_me) return $q.when(_me);
+
+      return $http.get(`${ENV.HOST}/me`)
+        .then(setMe.bind(this));
     }
 
     function login(username, password) {
       setAuthorizationHeaders(username, password);
       return me();
-    }
-
-    function me() {
-      if(_me)
-        return $q.when(_me);
-
-      return $http.get(`${ENV.HOST}/me`).then(setLoggedIn);
     }
 
     function register(username, password) {
@@ -45,25 +45,28 @@
       logout();
       return $http.post(`${ENV.HOST}/register`, params)
         .then(setAuthorizationHeaders.bind(this, username, password))
-        .then(loggedIn.bind(this, true));
+        .then(setMe.bind(this));
     }
 
     function logout() {
+      _me = false;
+      _me = false;
       saveTokenToStore(null);
-      loggedIn(false);
+      setLoggedIn(false);
     }
 
-    function loggedIn(value) {
-      if (value !== undefined)
-        _loggedIn = true;
-
+    function loggedIn() {
       return _loggedIn;
     }
 
-    function setLoggedIn(response) {
-      _loggedIn = true;
+    function setMe(response) {
+      setLoggedIn();
       _me = response.data;
       return _me;
+    }
+
+    function setLoggedIn(value = true) {
+      _loggedIn = value;
     }
 
     function setAuthorizationHeaders(username, password) {

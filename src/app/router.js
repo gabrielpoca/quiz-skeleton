@@ -36,12 +36,14 @@
       });
   }
 
-  function ensureAuthentication($q, $timeout, $state, authProvider) {
-    if (!authProvider.loggedIn()) {
-      $timeout(() => $state.go('login'));
-      return $q.reject();
-    }
-    return $q.when();
+  function ensureAuthentication($q, $state, authProvider) {
+    return authProvider.loaded()
+      .then(function() {
+        if (!authProvider.loggedIn()) {
+          $state.go("login");
+          throw "not signed in";
+        }
+      });
   }
 
   function Router($stateProvider, $urlRouterProvider) {
@@ -80,7 +82,7 @@
       .state('game.account', {
         url: '/account',
         views: {
-          'game.account': {
+          'game-account': {
             templateUrl: 'app/account/account.html',
             controller: 'AccountCtrl as ctrl'
           }
