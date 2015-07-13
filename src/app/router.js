@@ -1,6 +1,4 @@
 (function() {
-  'use strict';
-
   angular
     .module('starter')
     .config(Router)
@@ -40,8 +38,8 @@
     return authProvider.loaded()
       .then(function() {
         if (!authProvider.loggedIn()) {
-          $state.go("login");
-          throw "not signed in";
+          $state.go('login');
+          throw 'not signed in';
         }
       });
   }

@@ -1,14 +1,12 @@
 (function() {
-  "use strict";
-
   angular
-    .module("starter")
-    .controller("LoginCtrl", LoginCtrl);
+    .module('starter')
+    .controller('LoginCtrl', LoginCtrl);
 
   function LoginCtrl(authProvider, $state, $ionicHistory, $ionicViewSwitcher) {
     var ctrl = this;
 
-    ctrl.state = "login";
+    ctrl.state = 'login';
 
     authProvider.me()
       .then(redirect);
