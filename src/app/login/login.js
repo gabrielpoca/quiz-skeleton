@@ -3,7 +3,7 @@
     .module('starter')
     .controller('LoginCtrl', LoginCtrl);
 
-  function LoginCtrl(authProvider, $state, $ionicViewSwitcher, $ionicPopup) {
+  function LoginCtrl(authProvider, $state, $ionicPopup) {
     var ctrl = this;
 
     ctrl.state = 'login';
